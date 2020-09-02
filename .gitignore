@@ -11,7 +11,7 @@ target/
 *.class
 *.log
 *.project
-**/db
+/db
 
 ### STS ###
 .apt_generated
