@@ -14,13 +14,14 @@ import java.util.List;
 @Service
 public class GetPostsRestConnector {
 
-    @Value("get.posts.uri")
+    @Value("${get.posts.uri}")
     public String uri;
     @Autowired
     private RestTemplate restTemplate;
 
     public List<User> getAllUser() {
-        ResponseEntity<List<User>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<List<User>>() {});
+        ResponseEntity<List<User>> responseEntity = restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<List<User>>() {
+        });
         return responseEntity.getBody();
     }
 

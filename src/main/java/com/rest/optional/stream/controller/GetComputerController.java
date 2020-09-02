@@ -1,16 +1,16 @@
 package com.rest.optional.stream.controller;
 
 import com.rest.optional.stream.api.bin.User;
-import com.rest.optional.stream.api.dto.ComputerDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,12 +22,12 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping(path = "/", produces = {APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 @CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
-public class PostComputerController {
+public class GetComputerController {
 
     @Autowired
     GetPostsRestConnector connector;
 
-    @PostMapping(path = "/post/computer")
+    @GetMapping(path = "/get/computer")
     @ApiOperation(value = "API che crea un nuovo computer")
     @ApiResponses(value = {
             @ApiResponse(code = HTTP_OK, message = OK),
@@ -38,8 +38,8 @@ public class PostComputerController {
             @ApiResponse(code = HTTP_BAD_REQUEST, message = BAD_REQUEST),
             @ApiResponse(code = HTTP_PRECON_FAILED, message = PRECONDITION_FAILED)
     })
-    public ResponseEntity<String> postComputer(@RequestBody @Valid final ComputerDto dto) {
-
+    public ResponseEntity<String> getComputer() {
+        final List<User> allUser = connector.getAllUser();
         return (ResponseEntity<String>) ResponseEntity.ok();
     }
 
