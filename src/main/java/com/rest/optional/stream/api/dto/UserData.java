@@ -1,5 +1,8 @@
-package com.rest.optional.stream.api.bin;
+package com.rest.optional.stream.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +15,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User implements Serializable {
+@JsonTypeInfo(use = Id.CLASS, include = As.PROPERTY, property = "data")
+public class UserData implements Serializable {
 
     private static final long serialVersionUID = -3413836556179887134L;
     private BigInteger id;

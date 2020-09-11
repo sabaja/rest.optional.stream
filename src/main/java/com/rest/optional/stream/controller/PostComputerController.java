@@ -1,7 +1,7 @@
 package com.rest.optional.stream.controller;
 
-import com.rest.optional.stream.api.bin.User;
 import com.rest.optional.stream.api.dto.ComputerDto;
+import com.rest.optional.stream.connector.GetUsersRestConnector;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
-import java.util.List;
 
 import static com.rest.optional.stream.util.constants.HttpStatusMessage.Constants.*;
 import static java.net.HttpURLConnection.*;
@@ -25,7 +23,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 public class PostComputerController {
 
     @Autowired
-    GetPostsRestConnector connector;
+    GetUsersRestConnector connector;
 
     @PostMapping(path = "/post/computer")
     @ApiOperation(value = "API che crea un nuovo computer")
